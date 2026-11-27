@@ -18,19 +18,25 @@ function App() {
   const [segreto, setSegreto] = useState(numeroCasuale());
   const [tentativi, setTentativi] = useState([]); // Array di tentativi 
 
+  const ultimoTentativo = tentativi[tentativi.length-1]
+  const vittoria = ultimoTentativo === segreto;
+
   function numeroCasuale() {
-    return Math.floor(Math.random() * (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
+    const numeroCasuale = Math.floor(Math.random() * (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
+    console.log(numeroCasuale);
+    return numeroCasuale;
   }
 
   function gioca(numero) {
     // usiamo lo spread operator per copiare i valori di tentativi aggiungendo il numero scritto in input dall'utente
     // usiamo un nuovo array e non un push di numero perchè react si accorge del cambio di stato solo così
     setTentativi([...tentativi, numero])
+    console.log("numero:" + numero);
+    console.log("segreto: " + segreto);
   }
 
   // reset del mio stato al punto di inizio (nuovo numero casuale e nuovo array di tentativi)
   function nuovaPartita() {
-    console.log("Nuova Partita: " + segreto); 
     setSegreto(numeroCasuale());
     setTentativi([]);
   }
@@ -41,7 +47,7 @@ function App() {
       <p>Ho pensato un numero da {MIN_NUM} a {MAX_NUM} </p>
       <p>Numero segreto estratto: {segreto} (Cheat mode)</p>
 
-      <Tentativo onGioca={gioca} disabilitato={false} />
+      <Tentativo onGioca={gioca} disabilitato={vittoria} />
       <Messaggio />
       <Storico />
 
