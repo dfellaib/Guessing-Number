@@ -48,7 +48,7 @@ function App() {
       <p>Numero segreto estratto: {segreto} (Cheat mode)</p>
 
       <Tentativo onGioca={gioca} disabilitato={vittoria} />
-      <Messaggio />
+      <Messaggio ultimoNumero = {ultimoTentativo} segreto={segreto} numeroTentativi={tentativi.length}/>
       <Storico />
 
       {/** Se metto () dopo nuovaPartita, ho errore "Too many re-renders. React limits the number of renders to prevent an infinite loop" */}
