@@ -18,7 +18,6 @@ function App() {
   const [segreto, setSegreto] = useState(numeroCasuale());
   const [tentativi, setTentativi] = useState([]); // Array di tentativi 
 
-  // @TODO: implementare numero casuale 
   function numeroCasuale() {
     return Math.floor(Math.random() * (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
   }
@@ -41,7 +40,6 @@ function App() {
       <Storico />
 
       {/** Se metto () dopo nuovaPartita, ho errore "Too many re-renders. React limits the number of renders to prevent an infinite loop" */}
-
       <button onClick={nuovaPartita}>Nuova Partita</button>
 
     </main>
