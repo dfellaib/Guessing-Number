@@ -16,4 +16,4 @@ function Tentativo() {
 
 }
 
-export default Tentativo; 
+export default Tentativo;

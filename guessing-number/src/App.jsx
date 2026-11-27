@@ -22,6 +22,12 @@ function App() {
     return Math.floor(Math.random() * (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
   }
 
+  function gioca(numero) {
+    // usiamo lo spread operator per copiare i valori di tentativi aggiungendo il numero scritto in input dall'utente
+    // usiamo un nuovo array e non un push di numero perchè react si accorge del cambio di stato solo così
+    setTentativi([...tentativi, numero])
+  }
+
   // reset del mio stato al punto di inizio (nuovo numero casuale e nuovo array di tentativi)
   function nuovaPartita() {
     console.log("Nuova Partita: " + segreto); 
@@ -35,7 +41,7 @@ function App() {
       <p>Ho pensato un numero da {MIN_NUM} a {MAX_NUM} </p>
       <p>Numero segreto estratto: {segreto} (Cheat mode)</p>
 
-      <Tentativo />
+      <Tentativo onGioca={gioca} disabilitato={false} />
       <Messaggio />
       <Storico />
 
